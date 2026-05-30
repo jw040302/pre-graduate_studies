@@ -1,0 +1,12 @@
+# 1. 拦截 C++ 编译生成的 Linux 二进制黑框程序
+main
+*.out
+
+# 2. 拦截未来可能在 Windows 下生成的程序
+*.exe
+
+# 3. 拦截 VS Code 的本地编辑器配置文件（避免换电脑时冲突）
+.vscode/
+
+# 4. 拦截未来 Python 运行产生的缓存文件（为你以后学 Python 提前打基础）
+__pycache__/
