@@ -4,3 +4,4 @@ main
 .vscode/
 __pycache__/
 .venv/
+build/
