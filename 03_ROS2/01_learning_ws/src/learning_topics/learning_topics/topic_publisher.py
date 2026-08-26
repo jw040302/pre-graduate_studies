@@ -13,8 +13,11 @@ class TopicPublisher(Node):
             10,
         )
 
+        self.declare_parameter('publish_period', 0.5)
+        publish_period = self.get_parameter('publish_period').value
+
         self.message_count = 0
-        self.timer = self.create_timer(0.5, self.publish_message)
+        self.timer = self.create_timer(publish_period, self.publish_message)
 
     def publish_message(self):
         message = String()
