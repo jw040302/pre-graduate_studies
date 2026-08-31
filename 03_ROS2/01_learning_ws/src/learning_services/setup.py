@@ -27,6 +27,7 @@ setup(
             'add_two_ints_server = learning_services.add_two_ints_server:main',
             'add_two_ints_client = learning_services.add_two_ints_client:main',
             'rectangle_area_server = learning_services.rectangle_area_server:main',
+            'rectangle_area_client = learning_services.rectangle_area_client:main',
         ],
     },
 )
