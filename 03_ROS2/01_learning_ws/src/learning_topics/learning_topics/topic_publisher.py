@@ -1,4 +1,5 @@
 import rclpy
+from rcl_interfaces.msg import SetParametersResult
 from rclpy.node import Node
 from std_msgs.msg import String
 
@@ -18,6 +19,28 @@ class TopicPublisher(Node):
 
         self.message_count = 0
         self.timer = self.create_timer(publish_period, self.publish_message)
+        self.add_on_set_parameters_callback(self.parameter_callback)
+
+    def parameter_callback(self, parameters):
+        for parameter in parameters:
+            if parameter.name == 'publish_period':
+                if parameter.value <= 0.0:
+                    return SetParametersResult(
+                        successful=False,
+                        reason='publish_period必须大于0',
+                    )
+
+                self.destroy_timer(self.timer)
+                self.timer = self.create_timer(
+                    parameter.value,
+                    self.publish_message,
+                )
+
+                self.get_logger().info(
+                    f'发布周期已修改为：{parameter.value}秒'
+                )
+
+        return SetParametersResult(successful=True)
 
     def publish_message(self):
         message = String()
