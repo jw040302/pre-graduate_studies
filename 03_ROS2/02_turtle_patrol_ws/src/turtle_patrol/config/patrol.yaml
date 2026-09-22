@@ -1,0 +1,11 @@
+turtle_patrol:
+  ros__parameters:
+    waypoints_x: [2.0, 8.0, 8.0, 2.0]
+    waypoints_y: [2.0, 2.0, 8.0, 8.0]
+    max_linear_speed: 2.0
+    max_angular_speed: 2.0
+    linear_gain: 1.5
+    angular_gain: 4.0
+    angle_tolerance: 0.2
+    arrival_tolerance: 0.1
+    autostart: true
